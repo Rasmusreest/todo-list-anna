@@ -3,6 +3,7 @@ const taskInput = document.querySelector('#task');
 const form = document.querySelector("#task-form");
 const taskList = document.querySelector('.collection');
 const clearBtn = document.querySelector('#clear-tasks');
+const filterInput = document.querySelector('#filter');
 // define event listeners
 form.addEventListener('submit', addTask);
 //remove task from list -fas backspace icon
@@ -38,6 +39,9 @@ function addTask(e) {
 //clear task list
 clearBtn.addEventListener('click', clearTasks);
 
+//filter task from list
+filterInput.addEventListener('keyup', filterTasks);
+
 // removeTask function
 function removeTask(e) {
     if (e.target.parentElement.classList.contains("secondary-content")) {
@@ -50,4 +54,20 @@ function removeTask(e) {
 // clearTask function
 function clearTasks(e) {
     taskList.innerHTML = '';
+}
+
+// filterTasks function
+function filterTasks(e) {
+    const text = e.target.value.toLowerCase();
+    document.querySelectorAll('.collection-item').forEach(
+        function (task) {
+            const item = task.firstChild.textContent.toLowerCase();
+            if (item.indexOf(text) != -1) {
+                task.style.display = 'block';
+            } else {
+                task.style.display = 'none';
+            }
+
+        }
+    );
 }
