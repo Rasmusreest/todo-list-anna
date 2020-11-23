@@ -52,6 +52,7 @@ function removeTask(e) {
     if (e.target.parentElement.classList.contains('secondary-content')) {
         if (confirm("Do you want to remove this task?")) {
             e.target.parentElement.parentElement.remove();
+            storeTaskInLocalStorage();
         }
     }
 }
@@ -59,6 +60,7 @@ function removeTask(e) {
 // clearTasks function
 function clearTasks(e) {
     taskList.innerHTML = '';
+    localStorage.clear();
 }
 
 // filterTasks function
