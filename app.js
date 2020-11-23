@@ -1,3 +1,8 @@
+// define variables
+const form = document.querySelector('#task-form');
+const taskInput = document.querySelector('#task');
+const taskList = document.querySelector('.collection');
+const clearBtn = document.querySelector('#clear-tasks');
 const filterInput = document.querySelector('#filter');
 
 // define event listeners
@@ -40,6 +45,7 @@ function addTask(e) {
         e.preventDefault();
     }
 }
+
 // removeTask function
 function removeTask(e) {
     // is click is over icon - over a tag
@@ -54,6 +60,7 @@ function removeTask(e) {
 function clearTasks(e) {
     taskList.innerHTML = '';
 }
+
 // filterTasks function
 function filterTasks(e) {
     const text = e.target.value.toLowerCase();
